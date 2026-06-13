@@ -1,8 +1,13 @@
 #!/usr/bin/env ruby
+# Sorts passed arguments that are numerical and prints them
 
-args = ARGV
+result = []
+ARGV.each do |arg|
+    # Check if the argument is a valid integer (including negative numbers)
+    if arg =~ /^-?[0-9]+$/
+        result << arg.to_i
+    end
+end
 
-# yalnız rəqəmləri götür (C, fun kimi stringləri çıxarır)
-numbers = args.select { |a| a =~ /^-?\d+$/ }.map(&:to_i)
-
-puts numbers.sort.reverse
+# Sort the integers and print each on a new line
+puts result.sort
